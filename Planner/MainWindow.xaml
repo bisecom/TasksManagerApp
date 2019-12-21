@@ -1,0 +1,239 @@
+﻿<Window x:Class="Planner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Planner"
+        mc:Ignorable="d"
+        Title="Tasks2Do" Height="650" Width="800" x:Name="myWindow" Loaded="Window_Loaded" Icon="pack://siteoforigin:,,,/Resources/Iconshock-Real-Vista-Project-Managment-Calendar.ico">
+    <Window.Resources>
+            <ContextMenu x:Key="myContMenu" BorderBrush="Black" BorderThickness="1">
+                <MenuItem Header="Create a Task" Click="MenuItemCreate_Click"/>
+            </ContextMenu>
+            <SolidColorBrush Color="#e6eeff" x:Key="wholeGridBackground" />
+            <SolidColorBrush Color="#ccddff" x:Key="internalGridBackground" />
+            <SolidColorBrush Color="#003399" x:Key="wholeGridBackgroundHeader" />
+            <FontFamily x:Key="HraderFont">Verdana</FontFamily>
+            <FontWeight x:Key="tbweight">Bold</FontWeight>
+    </Window.Resources>
+    <Grid
+		x:Name="outGrid"
+		Background="{StaticResource wholeGridBackground}"
+		IsSharedSizeScope="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+				Width="200" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Height="70"/>
+            <RowDefinition
+				Height="25" />
+            <RowDefinition
+				Height="160" />
+            <RowDefinition
+				Height="3*" />
+        </Grid.RowDefinitions>
+       
+        <Border
+			Grid.Row="0"
+			BorderBrush="Black"
+			BorderThickness="1"></Border>
+        <Border
+			Grid.Row="1"
+			Grid.Column="1"
+			BorderBrush="Black"
+			BorderThickness="1"></Border>
+        <Border
+			Grid.Row="2"
+			BorderBrush="Black"
+			BorderThickness="1"></Border>
+        <Border
+			Grid.Row="3"
+			BorderBrush="Black"
+			BorderThickness="1"></Border>
+        <Calendar
+			x:Name="calendar"
+			FirstDayOfWeek="Monday" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+			Grid.Column="0"
+			Grid.Row="1"
+			Grid.RowSpan="2"
+			SelectedDatesChanged="Calendar_SelectedDatesChanged"></Calendar>
+        <Grid Background="{StaticResource wholeGridBackgroundHeader}" Grid.Row="0" Grid.ColumnSpan="2">
+            <TextBlock
+			x:Name="tbHeader"
+			Grid.Row="0"
+			Grid.Column="0"
+			Grid.ColumnSpan="2"
+			Text="Tasks2Do"
+			FontSize="60"
+			HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
+            FontStyle="Italic"
+            FontWeight="UltraBold"
+            Foreground ="{StaticResource wholeGridBackground}"
+            FontFamily="{StaticResource HraderFont}"
+            Background="{StaticResource wholeGridBackgroundHeader}"
+            />
+        </Grid>
+        <TextBlock
+			x:Name="tbTaskTimeDisplay"
+			Grid.Row="3"
+			Grid.Column="0"
+			FontSize="14"
+			Padding="10"
+            Height="Auto" Margin="5,0,5,193"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap"
+			RenderTransformOrigin="0.5,0.5">
+        </TextBlock>
+        <TextBlock
+			x:Name="tbTaskResponsDisplay"
+			Grid.Row="3"
+			Grid.Column="0"
+			FontSize="12"
+			Padding="10"
+            Height="Auto"
+            Margin="5,45,5,193"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap"
+			RenderTransformOrigin="0.5,0.5">
+        </TextBlock>
+        <TextBlock
+			x:Name="tbTaskSubjDisplay"
+			Grid.Row="3"
+			Grid.Column="0"
+			FontSize="12"
+			Padding="10"
+            Height="Auto" Margin="5,95,5,193"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TextWrapping="Wrap"
+			RenderTransformOrigin="0.5,0.5">
+        </TextBlock>
+        <TextBlock
+			x:Name="tbTaskDescrDisplay"
+			Grid.Row="3"
+			Grid.Column="0"
+			FontSize="9"
+			Padding="10"
+            Height="Auto" Margin="5,140,5,160"
+            HorizontalAlignment="Left"
+            TextWrapping="Wrap"
+			RenderTransformOrigin="0.5,0.5">
+        </TextBlock>
+        <Grid
+			x:Name="taskHeaderGrid"
+			Grid.Row="1"
+			Grid.Column="1"
+            Background="{StaticResource internalGridBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <ScrollViewer
+			VerticalScrollBarVisibility="Visible"
+			Grid.RowSpan="2"
+			Grid.Row="2"
+			Grid.Column="1">
+            <Grid
+				x:Name="internalGrid"
+				Height="670"
+				Background="{StaticResource internalGridBackground}" 
+                ContextMenu="{StaticResource myContMenu}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Border
+					Grid.Column="0"
+					Grid.RowSpan="35"
+					BorderBrush="Black"
+					BorderThickness="1" />
+                <Border
+					Grid.Column="1"
+					Grid.RowSpan="35"
+					BorderBrush="Black"
+					BorderThickness="1" />
+                <Border
+					Grid.Column="2"
+					Grid.RowSpan="35"
+					BorderBrush="Black"
+					BorderThickness="1" />
+                <Border
+					Grid.Column="3"
+					Grid.RowSpan="35"
+					BorderBrush="Black"
+					BorderThickness="1" />
+                <Border
+					Grid.Column="4"
+					Grid.RowSpan="35"
+					BorderBrush="Black"
+					BorderThickness="1" />
+                <Border
+					Grid.Column="5"
+					Grid.RowSpan="35"
+					BorderBrush="Black"
+					BorderThickness="1" />
+                <Border
+					Grid.Column="6"
+					Grid.RowSpan="35"
+					BorderBrush="Black"
+					BorderThickness="1" />
+
+                
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
